@@ -1,0 +1,8 @@
+/* TyleStyling is built by Ananth Rao, an aspiring web designer and developer at Rutgers University, NJ */
+/* ananthamapod.github.io */
+/* humanstxt.org */
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery, Orbit, Reveal, Foundation, EaselJS
+  Software: Sublime, Git, Sass

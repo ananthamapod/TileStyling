@@ -1,0 +1,31 @@
+html, body {
+	background: #ffc3d8;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+#wrapper {
+	background: #fff;
+	width: 100%;
+	max-width: 1172px;
+	margin: auto auto;
+	padding: 1em;
+	box-shadow: 0em 0em 1em 0.2em #bbb;
+}
+
+header h1 {
+	font-family: 'Playball', cursive;
+}
+
+#wrapper > header {
+	border-bottom: 1px solid #bbb;
+}
+
+.body {
+	margin: 10px;
+}
+
+canvas {
+	border: 1px solid black;
+}

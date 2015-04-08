@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>TileStyling | A Seamless Pattern Generator</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
+</head>
+<body onload="init();">
+	<div class="row" id="wrapper">
+		<header>
+			<h1 class="title">
+				TileStyling
+			<small>
+				A Seamless Pattern Generator for Web Designers
+			</small>
+			</h1>
+		</header>
+		<div class="body row">
+			<div id="main-canvas-holder" class="medium-12 large-7 columns">
+				<canvas id="overlay">
+				</canvas>
+				<canvas id="main">
+				</canvas>
+			</div>
+			<div class="medium-12 large-5 columns">
+				<div class="row">
+					<div class="medium-7 columns">
+						<canvas id="canvas_picker"></canvas>
+					</div>
+					<div class="medium-5 columns">
+						<canvas id="color-slider">
+						</canvas>
+						<span class="slider-handle"></span>
+						<input type="hidden">
+					</div>
+				</div>
+				<div class="menus row">
+					<div class="large-12">
+						<div class="row">
+							<div class="medium-6 columns">
+								<div id="colorbox">
+								</div>
+							</div>
+							<div class="medium-6 columns">
+								<div id="rgb">
+									RGB: 
+									<div id="r">
+										<input type="text" placeholder="R"></input>
+									</div>
+									<div id="g">
+										<input type="text" placeholder="G"></input>
+									</div>
+									<div id="b">
+										<input type="text" placeholder="B"></input>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<div id="hex">
+									HEX: 
+									<input type="text" placeholder=""></input>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<button id="export" data-reveal-id="exportModal" class="button secondary">		Export
+			</button>
+		</div>
+		<div id="exportModal" class="reveal-modal" data-reveal aria-labelledby="exportModalTitle" aria-hidden="true" role="dialog">
+			<h2 id="exportModalTitle">Export</h2>
+			<hr/>
+  			<div id="exportForm">
+  				<div class="row">
+  					<div class="medium-3 columns">
+  						<div class="choices checked">
+	  						<input checked type="radio" name="type" value="png"/>
+	  						<label for="png">PNG</label>
+  						</div>
+  						<div class="choices">
+	  						<input type="radio" name="type" value="jpg"/>
+	  						<label for="jpg">JPG</label>
+  						</div>
+  						<div class="choices">
+	  						<input type="radio" name="type" value="svg"/>
+	  						<label for="svg">SVG</label>
+  						</div>
+  					</div>
+  					<div class="medium-3 columns">
+  						<div class="choices">
+	  						<input type="radio" name="quality" value="1.0"/>
+	  						<label for="1.0">High</label>
+  						</div>
+  						<div class="choices">
+	  						<input type="radio" name="quality" value="0.5"/>
+	  						<label for="0.5">Medium</label>
+  						</div>
+  						<div class="choices checked">
+	  						<input type="radio" checked name="quality" value="0.1"/>
+	  						<label for="0.1">Low</label>
+  						</div>
+  					</div>
+  					<div class="medium-6 columns">
+  						<canvas id="showcase" >
+  						</canvas>
+  					</div>
+  				</div>
+  				<hr/>
+  				<div class="right">
+  					<a id="downloadButton" class="button">Download</a>
+  				</div>
+  			</div>
+			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+	</div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script type="text/javascript" src="js/setup.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script>
+      $(document).foundation();
+      setup();
+    </script>
+</body>
+</html>
