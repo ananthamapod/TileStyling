@@ -113,7 +113,7 @@ var colorPickerSetup = function() {
 		gradient.addColorStop(0,"white");
 		gradient.addColorStop(1,hex);
 		ctx.fillStyle = gradient;
-		ctx.fillRect(0,0,width,0);
+		ctx.fillRect(0,0,width,height/2);
 
 		var rgbInputs = $('#rgb input');
 		rgbInputs[0].value = r;
