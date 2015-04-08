@@ -1,5 +1,97 @@
 var stage, shape, oldX, oldY, size;
 
+var draw = function(evt) {
+	if (oldX) {
+		var width = this.canvas.width;
+		var increment = width/3;
+		var graphics = shape.graphics;
+		var trials = [0, width];
+
+		for(trialX in trials) {
+			var x = 1;
+			var currX = 0;
+			var iterX = 0;
+			var LorR = trialX == 0;
+			if(LorR) {
+				while(x > trialX) {
+					x = oldX - iterX*increment;
+					currX = evt.stageX - iterX*increment;
+
+					for(trialY in trials) {
+						var y = 1;
+						var currY = 0;
+						var iterY = 0;
+						var UorD = trialY == 0;
+
+						if(UorD) {
+							while(y > trialY) {
+								y = oldY - iterY*increment;
+								currY = evt.stageY - iterY*increment;
+								graphics.beginStroke(color)
+											  .setStrokeStyle(size, "round")
+											  .moveTo(x, y)
+											  .lineTo(currX, currY);
+								iterY++;
+							}
+						} else {
+							while(y < trialY) {
+								y = oldY + iterY*increment;
+								currY = evt.stageY + iterY*increment;
+								graphics.beginStroke(color)
+											  .setStrokeStyle(size, "round")
+											  .moveTo(x, y)
+											  .lineTo(currX, currY);
+								iterY++;
+							}
+						}
+					}
+					iterX++;
+				}
+			} else {
+				while(x < trialX) {
+					x = oldX + iterX*increment;
+					currX = evt.stageX + iterX*increment;
+
+					for(trialY in trials) {
+						var y = 1;
+						var currY = 0;
+						var iterY = 0;
+						var UorD = trialY == 0;
+
+						if(UorD) {
+							while(y > trialY) {
+								y = oldY - iterY*increment;
+								currY = evt.stageY - iterY*increment;
+								graphics.beginStroke(color)
+											  .setStrokeStyle(size, "round")
+											  .moveTo(x, y)
+											  .lineTo(currX, currY);
+								iterY++;
+							}
+						} else {
+							while(y < trialY) {
+								y = oldY + iterY*increment;
+								currY = evt.stageY + iterY*increment;
+								graphics.beginStroke(color)
+											  .setStrokeStyle(size, "round")
+											  .moveTo(x, y)
+											  .lineTo(currX, currY);
+					 			iterY++;
+							}
+						}
+					}
+					iterX++;
+				}
+			}
+		}
+
+
+		stage.update();
+	}
+	oldX = evt.stageX;
+	oldY = evt.stageY;
+};
+
 function init() {
 	stage = new createjs.Stage("main");
 	stage.autoClear = false;
@@ -13,107 +105,15 @@ function init() {
 	size = 2;
 	
 	// add handler for stage mouse events:
-	stage.on("click", function(event) {
-		size = 10;
-	})                
+	stage.on("stagemousedown", function(event) {
+	    stage.on("stagemousemove", draw);
+	})
 	
 	stage.on("stagemouseup", function(event) {
+		stage.removeEventListener('stagemousemove', draw, true);
 		/*color = createjs.Graphics.getHSL(Math.random()*360, 100, 50);*/
-		size = 2;
 	})
 	 			
-    stage.on("stagemousemove", function(evt) {
-		if (oldX) {
-			var width = this.canvas.width;
-			var increment = width/3;
-			var graphics = shape.graphics;
-			var trials = [0, width];
-
-			for(trialX in trials) {
-				var x = 1;
-				var currX = 0;
-				var iterX = 0;
-				var LorR = trialX == 0;
-				if(LorR) {
-					while(x > trialX) {
-						x = oldX - iterX*increment;
-						currX = evt.stageX - iterX*increment;
-
-						for(trialY in trials) {
-							var y = 1;
-							var currY = 0;
-							var iterY = 0;
-							var UorD = trialY == 0;
-
-							if(UorD) {
-								while(y > trialY) {
-									y = oldY - iterY*increment;
-									currY = evt.stageY - iterY*increment;
-									graphics.beginStroke(color)
-												  .setStrokeStyle(size, "round")
-												  .moveTo(x, y)
-												  .lineTo(currX, currY);
-									iterY++;
-								}
-							} else {
-								while(y < trialY) {
-									y = oldY + iterY*increment;
-									currY = evt.stageY + iterY*increment;
-									graphics.beginStroke(color)
-												  .setStrokeStyle(size, "round")
-												  .moveTo(x, y)
-												  .lineTo(currX, currY);
-									iterY++;
-								}
-							}
-						}
-						iterX++;
-					}
-				} else {
-					while(x < trialX) {
-						x = oldX + iterX*increment;
-						currX = evt.stageX + iterX*increment;
-
-						for(trialY in trials) {
-							var y = 1;
-							var currY = 0;
-							var iterY = 0;
-							var UorD = trialY == 0;
-
-							if(UorD) {
-								while(y > trialY) {
-									y = oldY - iterY*increment;
-									currY = evt.stageY - iterY*increment;
-									graphics.beginStroke(color)
-												  .setStrokeStyle(size, "round")
-												  .moveTo(x, y)
-												  .lineTo(currX, currY);
-									iterY++;
-								}
-							} else {
-								while(y < trialY) {
-									y = oldY + iterY*increment;
-									currY = evt.stageY + iterY*increment;
-									graphics.beginStroke(color)
-												  .setStrokeStyle(size, "round")
-												  .moveTo(x, y)
-												  .lineTo(currX, currY);
-						 			iterY++;
-								}
-							}
-						}
-						iterX++;
-					}
-				}
-			}
-
-
-			stage.update();
-		}
-		oldX = evt.stageX;
-		oldY = evt.stageY;
-	});
-	
 	stage.update();
 }
 
