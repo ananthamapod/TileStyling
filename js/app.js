@@ -7,13 +7,18 @@ var draw = function(evt) {
 		var graphics = shape.graphics;
 		var trials = [0, width];
 
+		//Verrrry sloppy right now, I know. Idea was just to get a working version initially before cleaning up logic and code
+		//tries first left edge and then right edge.
 		for(trialX in trials) {
 			var x = 1;
 			var currX = 0;
 			var iterX = 0;
-			var LorR = trialX == 0;
+			var LorR = (trialX == 0);
+
+			//if left edge
 			if(LorR) {
-				while(x > trialX) {
+				//For each square from current position to left edge
+				while(x >= trialX) {
 					x = oldX - iterX*increment;
 					currX = evt.stageX - iterX*increment;
 
@@ -21,10 +26,10 @@ var draw = function(evt) {
 						var y = 1;
 						var currY = 0;
 						var iterY = 0;
-						var UorD = trialY == 0;
+						var UorD = (trialY == 0);
 
 						if(UorD) {
-							while(y > trialY) {
+							while(y >= trialY) {
 								y = oldY - iterY*increment;
 								currY = evt.stageY - iterY*increment;
 								graphics.beginStroke(color)
@@ -32,9 +37,10 @@ var draw = function(evt) {
 											  .moveTo(x, y)
 											  .lineTo(currX, currY);
 								iterY++;
+								stage.update();
 							}
 						} else {
-							while(y < trialY) {
+							while(y <= trialY) {
 								y = oldY + iterY*increment;
 								currY = evt.stageY + iterY*increment;
 								graphics.beginStroke(color)
@@ -42,13 +48,14 @@ var draw = function(evt) {
 											  .moveTo(x, y)
 											  .lineTo(currX, currY);
 								iterY++;
+								stage.update();
 							}
 						}
 					}
 					iterX++;
 				}
 			} else {
-				while(x < trialX) {
+				while(x <= trialX) {
 					x = oldX + iterX*increment;
 					currX = evt.stageX + iterX*increment;
 
@@ -59,7 +66,7 @@ var draw = function(evt) {
 						var UorD = trialY == 0;
 
 						if(UorD) {
-							while(y > trialY) {
+							while(y >= trialY) {
 								y = oldY - iterY*increment;
 								currY = evt.stageY - iterY*increment;
 								graphics.beginStroke(color)
@@ -67,9 +74,10 @@ var draw = function(evt) {
 											  .moveTo(x, y)
 											  .lineTo(currX, currY);
 								iterY++;
+								stage.update();
 							}
 						} else {
-							while(y < trialY) {
+							while(y <= trialY) {
 								y = oldY + iterY*increment;
 								currY = evt.stageY + iterY*increment;
 								graphics.beginStroke(color)
@@ -77,6 +85,7 @@ var draw = function(evt) {
 											  .moveTo(x, y)
 											  .lineTo(currX, currY);
 					 			iterY++;
+								stage.update();
 							}
 						}
 					}
@@ -92,6 +101,16 @@ var draw = function(evt) {
 	oldY = evt.stageY;
 };
 
+function toggleDraw() {
+    if(stage.hasEventListener("stagemousemove")) {
+		stage.removeEventListener('stagemousemove', draw);
+		return;
+    } else {
+    	    stage.on("stagemousemove", draw);
+    }
+	/*color = createjs.Graphics.getHSL(Math.random()*360, 100, 50);*/
+}
+
 function init() {
 	stage = new createjs.Stage("main");
 	stage.autoClear = false;
@@ -106,15 +125,9 @@ function init() {
 	
 	// add handler for stage mouse events:
 	stage.on("stagemousedown", function(event) {
-	    stage.on("stagemousemove", draw);
-	})
-	
-	stage.on("stagemouseup", function(event) {
-		stage.removeEventListener('stagemousemove', draw, true);
-		/*color = createjs.Graphics.getHSL(Math.random()*360, 100, 50);*/
-	})
-	 			
-	stage.update();
+		toggleDraw();
+		console.log(stage);
+	})	 			
 }
 
 function displayExport() {

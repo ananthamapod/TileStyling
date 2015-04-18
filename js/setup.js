@@ -86,6 +86,9 @@ var colorPickerSetup = function() {
 	var slider = $('#color-slider');
 	slider.height(width);
 
+	slider[0].width = 20;
+	slider[0].height = width;
+
 	colorPickerSelector.on("click", function(event) {
 		var rect = this.getBoundingClientRect();
 
@@ -105,15 +108,25 @@ var colorPickerSetup = function() {
 		var rgb = r + ', ' + g + ', ' + b;
 		var hex = imageData.hex();
 		$('#colorbox').css('background-color', 'rgb('+rgb+')');
-		var slider = $('#color-slider').css('background-color', 'rgb('+rgb+')');
+		var slider = $('#color-slider');
 		var width = slider.width();
 		var height = slider.height();
+
 		var ctx = slider[0].getContext('2d');
-		var gradient = ctx.createLinearGradient(0,0,0,height/2);
-		gradient.addColorStop(0,"white");
-		gradient.addColorStop(1,hex);
-		ctx.fillStyle = gradient;
-		ctx.fillRect(0,0,width,height/2);
+		console.log(width);
+
+		var gradient1 = ctx.createLinearGradient(0,0,0,height/2);
+		gradient1.addColorStop(0,"white");
+		gradient1.addColorStop(1,hex);
+		ctx.fillStyle = gradient1;
+		ctx.fillRect(0,0,1000,height/2);
+
+		var gradient2 = ctx.createLinearGradient(0,height/2,0, height);
+		gradient2.addColorStop(1,"black");
+		gradient2.addColorStop(0,hex);
+		ctx.fillStyle = gradient2;
+		ctx.fillRect(0,height/2,1000,height);
+
 
 		var rgbInputs = $('#rgb input');
 		rgbInputs[0].value = r;
