@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Playball');
+@import '~foundation-sites/scss/foundation.scss';
+@import './normalize.css';
+
+html, body {
+  background: #0084C5;
+
+  /*#FF6800/*#01C302/*#ffc3d8*/
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+#wrapper {
+  background: #fff;
+  width: 100%;
+  max-width: 1172px;
+  margin: auto auto;
+  padding: 1em;
+  box-shadow: 0em 0em 1em 0.2em #bbb;
+  height: 100%;
+}
+
+header h1 {
+  font-family: 'Playball', cursive;
+}
+
+#wrapper > header {
+  border-bottom: 1px solid #bbb;
+}
+
+.body {
+  padding: 10px;
+}
+
+#main-canvas-holder {
+  position: relative;
+}
+
+#main-canvas-holder canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+canvas#main {
+  border: 1px solid #999999;
+}
+
+canvas.overlay {
+  z-index: 999;
+}
+
+div#colorbox {
+  border: 1px solid black;
+  border-radius: 2rem;
+  vertical-align: middle;
+}
+
+canvas#canvas_picker {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.menus div {
+  vertical-align: middle;
+}
+
+canvas#color-slider {
+  width: 1rem;
+  border: 2px solid #999;
+}
+
+.slider-handle {
+  height: 1rem;
+  width: 1rem;
+
+  /*	position: relative;
+  left: 1rem;
+  */
+  background: url(../img/color-picker.png);
+  border: 1px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.reveal-modal .row .columns {
+  text-align: center;
+}
+
+.reveal-modal input[type=radio] {
+  display: none;
+}
+
+.reveal-modal .choices {
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+.reveal-modal .checked {
+  font-weight: bold;
+  background-color: #0084C5;
+}
+
+.checked label {
+  color: white;
+}

@@ -1,0 +1,60 @@
+{
+  "name": "tilestyling",
+  "version": "1.0.0",
+  "description": "tool to build seamless image tiles for design purposes",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch webpack.config.js --watch webpack --exec \"node_modules/.bin/webpack -d --watch --env development\"",
+    "build": "node_modules/.bin/webpack -p --env production",
+    "start": "node_modules/.bin/webpack-dev-server --content-base app --env development"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.7.2",
+    "eslint-loader": "^1.9.0",
+    "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.22.0",
+    "imports-loader": "^0.7.1",
+    "manifest-revision-webpack-plugin": "^0.4.0",
+    "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^2.0.6",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "stylelint": "^8.1.1",
+    "stylelint-webpack-plugin": "^0.9.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "bower-resolve-webpack-plugin": "^1.0.4",
+    "easeljs": "^1.0.2",
+    "foundation-sites": "^6.4.4-rc1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ananthamapod/TileStyling.git"
+  },
+  "author": "Ananth Rao @ananthamapod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ananthamapod/TileStyling/issues"
+  },
+  "homepage": "https://github.com/ananthamapod/TileStyling#readme"
+}

@@ -1,0 +1,80 @@
+doctype html
+html.no-js(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title TileStyling | A Seamless Pattern Generator
+  body
+    #wrapper.row
+      header
+        h1.title
+          | TileStyling
+          small
+            | A Seamless Pattern Generator for Web Designers
+      .body.row
+        #main-canvas-holder.medium-12.large-7.columns
+          canvas#overlay
+          canvas#main
+        .medium-12.large-5.columns
+          .row
+            .medium-7.columns
+              canvas#canvas_picker
+            .medium-5.columns
+              canvas#color-slider
+              span.slider-handle
+              input(type='hidden')
+          .menus.row
+            .large-12
+              .row
+                .medium-6.columns
+                  #colorbox
+                .medium-6.columns
+                  #rgb
+                    | RGB:
+                    #r
+                      input(type='text', placeholder='R')
+                    #g
+                      input(type='text', placeholder='G')
+                    #b
+                      input(type='text', placeholder='B')
+              .row
+                .large-12.columns
+                  #hex
+                    | HEX:
+                    input(type='text', placeholder='')
+      hr
+      div
+        button#export.button.secondary(data-reveal-id='exportModal')
+          | Export
+      #exportModal.reveal-modal(data-reveal='', aria-labelledby='exportModalTitle', aria-hidden='true', role='dialog')
+        h2#exportModalTitle Export
+        hr
+        #exportForm
+          .row
+            .medium-3.columns
+              .choices.checked
+                input(checked='', type='radio', name='type', value='png')
+                label(for='png') PNG
+              .choices
+                input(type='radio', name='type', value='jpg')
+                label(for='jpg') JPG
+              .choices
+                input(type='radio', name='type', value='svg')
+                label(for='svg') SVG
+            .medium-3.columns
+              .choices
+                input(type='radio', name='quality', value='1.0')
+                label(for='1.0') High
+              .choices
+                input(type='radio', name='quality', value='0.5')
+                label(for='0.5') Medium
+              .choices.checked
+                input(type='radio', checked='', name='quality', value='0.1')
+                label(for='0.1') Low
+            .medium-6.columns
+              canvas#showcase
+          hr
+          .right
+            a#downloadButton.button Download
+        a.close-reveal-modal(aria-label='Close') ×
+    script(src="https://code.createjs.com/easeljs-0.8.2.min.js")
